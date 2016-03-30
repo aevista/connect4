@@ -10,7 +10,7 @@ class Board
 
     def full_board?
         @board.each{|row| return false if row.include?('-')}
-        true
+        return true
     end
 
     def place_piece?(column, piece)
@@ -21,7 +21,7 @@ class Board
         end 
         return false if n == @board.length 
         @board[n][column] = piece
-        true
+        return true
     end
 
     def display_board
