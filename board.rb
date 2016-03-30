@@ -42,17 +42,11 @@ class Board
             row.each_cons(4){ |set| a << set if !set.include?('-')}
             a.each{|subset| return true if subset.all?{|element| element == subset.first}}
         end
-        false
+        return false
     end
 
     def check_column board
-        temp_board = board.transpose
-        temp_board.each do |column|
-            a = Array.new
-            column.each_cons(4){ |set| a << set  if !set.include?('-')}
-            a.each{|subset| return true if subset.all?{|element| element == subset.first}}
-        end
-        false
+        return check_row board.transpose
     end
     
     def check_diagonal board
@@ -64,7 +58,7 @@ class Board
             right_diag << row.rotate(-n)
         end
 
-        check_column left_diag
-        check_column right_diag
+        return check_column left_diag
+        return check_column right_diag
     end
 end
